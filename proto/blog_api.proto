@@ -1,0 +1,17 @@
+syntax = "proto3";
+package blogapi;
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+
+message Pong {
+    string answer = 1;
+}
+
+service BlogService {
+    rpc Ping(google.protobuf.Empty) returns (Pong) {
+        option (google.api.http) = {
+            get: "/ping"
+        };
+    }
+}
