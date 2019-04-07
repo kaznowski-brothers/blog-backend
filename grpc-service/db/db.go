@@ -1,9 +1,5 @@
 package db
 
-import (
-	_ "github.com/jinzhu/gorm/dialects/sqlite"
-)
-
 type DB struct {
 	numberOfCalls uint64
 }

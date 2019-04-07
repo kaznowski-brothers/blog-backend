@@ -1,0 +1,22 @@
+version: "3"
+services:
+  grpc-service:
+    build: ./grpc-service
+    ports:
+      - "10000:10000"
+    expose:
+      - "10000"
+    volumes:
+      - ./grpc-service:/go/src/kaznowski-brothers/blog-backend/grpc-service:cached
+  grpc-gateway:
+    depends_on:
+      - grpc-service
+    build: ./grpc-gateway
+    ports:
+      - "8080:8080"
+    expose:
+      - "8080"
+    volumes:
+      - ./grpc-gateway:/go/src/kaznowski-brothers/blog-backend/grpc-gateway:cached
+    links:
+      - "grpc-service:service"

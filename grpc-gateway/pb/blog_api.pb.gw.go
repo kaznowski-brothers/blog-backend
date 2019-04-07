@@ -6,7 +6,7 @@ Package blogapi is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package blogapi
+package pb
 
 import (
 	"io"

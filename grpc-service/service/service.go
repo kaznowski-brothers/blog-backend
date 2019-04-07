@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"github.com/golang/protobuf/ptypes/empty"
 	"github.com/kaznowski-brothers/blog-backend/grpc-service/db"
-	pb "github.com/kaznowski-brothers/blog-backend/proto"
+	pb "github.com/kaznowski-brothers/blog-backend/grpc-service/pb"
 	"log"
 )
 

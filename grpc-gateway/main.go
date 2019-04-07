@@ -11,7 +11,7 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
-	gw "github.com/kaznowski-brothers/blog-backend/proto"
+	pb "github.com/kaznowski-brothers/blog-backend/grpc-gateway/pb"
 )
 
 var (
@@ -50,7 +50,7 @@ func run() error {
 	mux := runtime.NewServeMux()
 	opts := []grpc.DialOption{grpc.WithInsecure()}
 	log.Printf("Connecting to Blog GRPC Server on %s", *endpoint)
-	err := gw.RegisterBlogServiceHandlerFromEndpoint(ctx, mux, *endpoint, opts)
+	err := pb.RegisterBlogServiceHandlerFromEndpoint(ctx, mux, *endpoint, opts)
 	if err != nil {
 		return err
 	}

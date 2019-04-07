@@ -3,8 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
+	pb "github.com/kaznowski-brothers/blog-backend/grpc-service/pb"
 	"github.com/kaznowski-brothers/blog-backend/grpc-service/service"
-	pb "github.com/kaznowski-brothers/blog-backend/proto"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/testdata"
@@ -21,9 +21,9 @@ var (
 )
 
 func main() {
-	log.Printf("Starting server on port: %v", *port)
 	flag.Parse()
-	lis, err := net.Listen("tcp", fmt.Sprintf("localhost:%d", *port))
+	log.Printf("Starting server on port: %v", *port)
+	lis, err := net.Listen("tcp", fmt.Sprintf("grpc-service:%d", *port))
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}

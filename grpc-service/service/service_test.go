@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 	"github.com/golang/protobuf/ptypes/empty"
-	"github.com/kaznowski-brothers/blog-backend/proto"
+	"github.com/kaznowski-brothers/blog-backend/grpc-service/pb"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
@@ -22,7 +22,7 @@ func TestPing(t *testing.T) {
 
 		assert.NoError(t, err)
 
-		expectedResponse := &blogapi.Pong{
+		expectedResponse := &pb.Pong{
 			Answer: "Pong answer 1",
 		}
 		assert.Equal(t, response, expectedResponse)
