@@ -1,22 +1,29 @@
 version: "3"
 services:
   grpc-service:
-    build: ./grpc-service
+    build:
+      context: $BLOGBACKENDPATH/grpc-service/
+      dockerfile: $BLOGBACKENDPATH/grpc-service/Dockerfile
     ports:
       - "10000:10000"
     expose:
       - "10000"
-    volumes:
-      - ./grpc-service:/go/src/kaznowski-brothers/blog-backend/grpc-service:cached
   grpc-gateway:
     depends_on:
       - grpc-service
-    build: ./grpc-gateway
+    build:
+      context: $BLOGBACKENDPATH/grpc-gateway/
+      dockerfile: $BLOGBACKENDPATH/grpc-gateway/Dockerfile
     ports:
       - "8080:8080"
     expose:
       - "8080"
-    volumes:
-      - ./grpc-gateway:/go/src/kaznowski-brothers/blog-backend/grpc-gateway:cached
     links:
       - "grpc-service:service"
+  blog-frontend:
+    container_name: blog-frontend
+    build:
+      context: $BLOGFRONTENDPATH/
+      dockerfile: $BLOGFRONTENDPATH/Dockerfile
+    ports:
+      - '80:80'
